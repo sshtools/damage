@@ -1,6 +1,6 @@
 /**
  * XDAMAGE Java Bindings - This is a simple extension of JNA Platform, adding the XFixes and XDamage extensions (and a couple more X11 functions)
- * Copyright © ${project.inceptionYear} SSHTOOLS Limited (support@sshtools.com)
+ * Copyright © 2012 SSHTOOLS Limited (support@sshtools.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
