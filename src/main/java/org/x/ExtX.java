@@ -111,9 +111,9 @@ public interface ExtX extends X11 {
 		 * @param error_base_return event base return
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XDamageQueryExtension(Display, IntBuffer, IntBuffer)}
+		 *             {@link Xdamage#XDamageQueryExtension(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link #XDamageQueryExtension(Display, IntByReference, IntByReference)}
+		 *             {@link Xdamage#XDamageQueryExtension(Display, IntByReference, IntByReference)}
 		 *             instead
 		 * @return results
 		 */
@@ -143,9 +143,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XDamageQueryVersion(Display, IntBuffer, IntBuffer)}
+		 *             {@link Xdamage#XDamageQueryVersion(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link #XDamageQueryVersion(Display, IntByReference, IntByReference)}
+		 *             {@link Xdamage#XDamageQueryVersion(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -457,12 +457,12 @@ public interface ExtX extends X11 {
 			/** C type : unsigned long* */
 			public NativeLongByReference pixels;
 			/**
-			 * Version >= 2 only<br>
+			 * Version &gt;= 2 only<br>
 			 * C type : Atom
 			 */
 			public NativeLong atom;
 			/**
-			 * Version >= 2 only<br>
+			 * Version &gt;= 2 only<br>
 			 * C type : const char*
 			 */
 			public Pointer name;
@@ -514,9 +514,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesQueryExtension(Display, IntBuffer, IntBuffer)}
+		 *             {@link XFixes#XFixesQueryExtension(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link #XFixesQueryExtension(Display, IntByReference, IntByReference)}
+		 *             {@link XFixes#XFixesQueryExtension(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -545,9 +545,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesQueryVersion(Display, IntBuffer, IntBuffer)}
+		 *             {@link XFixes#XFixesQueryVersion(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link #XFixesQueryVersion(Display, IntByReference, IntByReference)}
+		 *             {@link XFixes#XFixesQueryVersion(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -642,7 +642,7 @@ public interface ExtX extends X11 {
 		 * <i>native declaration : extensions/Xfixes.h:2112</i>
 		 * 
 		 * @param dpy display
-		 * @param bitmap
+		 * @param bitmap bitmap
 		 * @return result
 		 */
 		NativeLong XFixesCreateRegionFromBitmap(Display dpy, NativeLong bitmap);
@@ -666,7 +666,7 @@ public interface ExtX extends X11 {
 		 * <i>native declaration : extensions/Xfixes.h:2116</i>
 		 * 
 		 * @param dpy display
-		 * @param gc
+		 * @param gc gc
 		 * @return result
 		 */
 		NativeLong XFixesCreateRegionFromGC(Display dpy, GC gc);
@@ -678,7 +678,7 @@ public interface ExtX extends X11 {
 		 * <i>native declaration : extensions/Xfixes.h:2118</i>
 		 * 
 		 * @param dpy display
-		 * @param picture
+		 * @param picture picture
 		 * @return result
 		 */
 		NativeLong XFixesCreateRegionFromPicture(Display dpy, NativeLong picture);
@@ -807,9 +807,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesFetchRegion(Display, NativeLong, IntBuffer)}
+		 *             {@link XFixes#XFixesFetchRegion(Display, NativeLong, IntBuffer)}
 		 *             and
-		 *             {@link #XFixesFetchRegion(Display, NativeLong, IntByReference)}
+		 *             {@link XFixes#XFixesFetchRegion(Display, NativeLong, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -841,9 +841,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesFetchRegionAndBounds(Display, NativeLong, IntBuffer, org.x.X11.XRectangle)}
+		 *             {@link XFixes#XFixesFetchRegionAndBounds(Display, NativeLong, IntBuffer, org.x.X11.XRectangle)}
 		 *             and
-		 *             {@link #XFixesFetchRegionAndBounds(Display, NativeLong, IntByReference, org.x.X11.XRectangle)}
+		 *             {@link XFixes#XFixesFetchRegionAndBounds(Display, NativeLong, IntByReference, org.x.X11.XRectangle)}
 		 *             instead
 		 */
 		@Deprecated
@@ -916,9 +916,9 @@ public interface ExtX extends X11 {
 		 * @param name name
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesSetCursorName(Display, NativeLong, Pointer)}
+		 *             {@link XFixes#XFixesSetCursorName(Display, NativeLong, Pointer)}
 		 *             and
-		 *             {@link #XFixesSetCursorName(Display, NativeLong, String)}
+		 *             {@link XFixes#XFixesSetCursorName(Display, NativeLong, String)}
 		 *             instead
 		 */
 		@Deprecated
@@ -969,9 +969,9 @@ public interface ExtX extends X11 {
 		 * @param name name
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesChangeCursorByName(Display, NativeLong, Pointer)}
+		 *             {@link XFixes#XFixesChangeCursorByName(Display, NativeLong, Pointer)}
 		 *             and
-		 *             {@link #XFixesChangeCursorByName(Display, NativeLong, String)}
+		 *             {@link XFixes#XFixesChangeCursorByName(Display, NativeLong, String)}
 		 *             instead
 		 */
 		@Deprecated
@@ -1043,9 +1043,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntBuffer)}
+		 *             {@link XFixes#XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntBuffer)}
 		 *             and
-		 *             {@link #XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntByReference)}
+		 *             {@link XFixes#XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -1091,9 +1091,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link #XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntBuffer)}
+		 *             {@link XFixes#XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntBuffer)}
 		 *             and
-		 *             {@link #XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntByReference)}
+		 *             {@link XFixes#XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated

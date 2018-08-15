@@ -20,8 +20,6 @@ public interface ExtUser32 extends User32 {
 	/**
 	 * The GetCursorPos function retrieves the position of the mouse cursor, in screen coordinates.
 	 * 
-	 * @param hWnd
-	 *            Handle to the window whose information is to be retrieved.
 	 * @param lpPoint
 	 *            Pointer to a LPPOINT structure to receive the information.
 	 * @return If the function succeeds, the return value is nonzero. If the
