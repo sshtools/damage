@@ -28,6 +28,7 @@ import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.Structure;
+import com.sun.jna.Structure.FieldOrder;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.NativeLongByReference;
 
@@ -54,17 +55,41 @@ public interface ExtX extends X11 {
 	interface XExt extends Library {
 		XExt INSTANCE = (XExt) Native.loadLibrary("Xext", XExt.class);
 
-		XImage XShmCreateImage(Display display, Visual visual, IntByReference depth, int format, String data,
-				XShmSegmentInfo shminfo, IntByReference width, IntByReference height);
+		XImage XShmCreateImage(Display display, Visual visual, int depth, int format, String data,
+				XShmSegmentInfo shminfo, int width, int height);
 
 		boolean XShmGetImage(Display dpy, Drawable drawable, XImage image, int x, int y, NativeLong plane_mask);
 
 		boolean XShmAttach(Display dpy, XShmSegmentInfo shminfo);
 
 		boolean XShmDetach(Display dpy, XShmSegmentInfo shminfo);
+		
+		boolean XShmQueryExtension(Display dpy);
+	}
+	interface Xcomposite extends Library {
+
+		Xcomposite INSTANCE = (Xcomposite) Native.loadLibrary("Xcomposite", Xcomposite.class);
+		
+		int XCompositeQueryExtension(Display dpy, IntBuffer event_base_return, IntBuffer error_base_return);
+		@Deprecated
+		int XCompositeQueryExtension(Display dpy, IntByReference event_base_return, IntByReference error_base_return);
+		int XCompositeQueryVersion(Display dpy, IntBuffer major_version_return, IntBuffer minor_version_return);
+		@Deprecated
+		int XCompositeQueryVersion(Display dpy, IntByReference major_version_return, IntByReference minor_version_return);
+		int XCompositeVersion();
+		void XCompositeRedirectWindow(Display dpy, Window window, int update);
+		void XCompositeRedirectSubwindows(Display dpy, Window window, int update);
+		void XCompositeUnredirectWindows(Display dpy, Window window, int update);
+		void XCompositeUnredirectSubwindows(Display dpy, Window window, int update);
+		NativeLong XCompositeCreateRegionFromBorderClip(Display dpy, Window window);
+		Pixmap XCompositeNameWindowPixmap(Display dpy, Window window);
+		Window XCompositeGetOverlayWindow(Display dpy, Window window);
+		Window XCompositeReleaseOverlayWindow(Display dpy, Window window);
 	}
 
 	interface Xdamage extends Library {
+		@FieldOrder({ "type", "serial", "send_event", "display", "drawable", "damage", "level", "more", "timestamp", "area",
+		"geometry" })
 		class NotifyEvent extends Structure {
 			/** event base */
 			public int type;
@@ -88,11 +113,6 @@ public interface ExtX extends X11 {
 
 			public NotifyEvent() {
 				super();
-			}
-
-			protected List<?> getFieldOrder() {
-				return Arrays.asList("type", "serial", "send_event", "display", "drawable", "damage", "level", "more", "timestamp",
-						"area", "geometry");
 			}
 
 			protected ByReference newByReference() {
@@ -298,6 +318,8 @@ public interface ExtX extends X11 {
 		int XFIXES_MAJOR = 6;
 		int XFIXES_MINOR = 0;
 
+		@FieldOrder({ "type", "serial", "send_event", "display", "window", "subtype", "owner", "selection", "timestamp",
+				"selection_timestamp" })
 		public class SelectionNotifyEvent extends Structure {
 			/** event base */
 			public int type;
@@ -321,11 +343,6 @@ public interface ExtX extends X11 {
 				super();
 			}
 
-			protected List<?> getFieldOrder() {
-				return Arrays.asList("type", "serial", "send_event", "display", "window", "subtype", "owner", "selection",
-						"timestamp", "selection_timestamp");
-			}
-
 			protected ByReference newByReference() {
 				return new ByReference();
 			}
@@ -345,6 +362,8 @@ public interface ExtX extends X11 {
 			};
 		}
 
+		@FieldOrder({ "type", "serial", "send_event", "display", "window", "subtype", "event_id", "directions", "barrier", "x", "y",
+				"velocity", "timestamp" })
 		public class BarrierNotifyEvent extends Structure {
 			/** event base */
 			public int type;
@@ -370,11 +389,6 @@ public interface ExtX extends X11 {
 				super();
 			}
 
-			protected List<?> getFieldOrder() {
-				return Arrays.asList("type", "serial", "send_event", "display", "window", "subtype", "event_id", "directions",
-						"barrier", "x", "y", "velocity", "timestamp");
-			}
-
 			protected ByReference newByReference() {
 				return new ByReference();
 			}
@@ -394,6 +408,8 @@ public interface ExtX extends X11 {
 			};
 		}
 
+		@FieldOrder({ "type", "serial", "send_event", "display", "window", "subtype", "cursor_serial", "timestamp",
+			"cursor_name"})
 		class CursorNotifyEvent extends Structure {
 			/** event base */
 			public int type;
@@ -412,11 +428,6 @@ public interface ExtX extends X11 {
 
 			public CursorNotifyEvent() {
 				super();
-			}
-
-			protected List<?> getFieldOrder() {
-				return Arrays.asList("type", "serial", "send_event", "display", "window", "subtype", "cursor_serial", "timestamp",
-						"cursor_name");
 			}
 
 			/**
@@ -463,6 +474,7 @@ public interface ExtX extends X11 {
 			};
 		}
 
+		@FieldOrder({ "x", "y", "width", "height", "xhot", "yhot", "cursor_serial", "pixels", "atom", "name"})
 		public class XFixesCursorImage extends Structure {
 			public short x;
 			public short y;
@@ -486,10 +498,6 @@ public interface ExtX extends X11 {
 
 			public XFixesCursorImage() {
 				super();
-			}
-
-			protected List<?> getFieldOrder() {
-				return Arrays.asList("x", "y", "width", "height", "xhot", "yhot", "cursor_serial", "pixels", "atom", "name");
 			}
 
 			protected ByReference newByReference() {
