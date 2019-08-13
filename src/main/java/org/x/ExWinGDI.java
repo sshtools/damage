@@ -17,6 +17,7 @@
  */
 package org.x;
 
+import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 import com.sun.jna.Structure.FieldOrder;
 import com.sun.jna.Union;
@@ -26,12 +27,11 @@ import com.sun.jna.platform.win32.WinGDI;
 
 public interface ExWinGDI extends WinGDI {
 	public final static int DM_BITSPERPEL = 0x00040000;
-	public final static int DM_PELSWIDTH =  0x00080000;
-	public final static int DM_POSITION =   0x00000020;
+	public final static int DM_PELSWIDTH = 0x00080000;
+	public final static int DM_POSITION = 0x00000020;
 	public final static int DM_PELSHEIGHT = 0x00100000;
-	
 	public static final int DISPLAY_DEVICE_PRIMARY_DEVICE = 4;
-	
+
 	@FieldOrder({ "cb", "DeviceName", "DeviceString", "stateFlags", "DeviceID", "DeviceKey" })
 	public static class DISPLAY_DEVICEA extends Structure {
 		public DWORD cb;
@@ -44,8 +44,8 @@ public interface ExWinGDI extends WinGDI {
 
 	@FieldOrder({ "x", "y" })
 	public static class POINTL extends Structure {
-		public long x;
-		public long y;
+		public NativeLong x;
+		public NativeLong y;
 	}
 
 	@FieldOrder({ "dmDeviceName", "dmSpecVersion", "dmDriverVersion", "dmSize", "dmDriverExtra", "dmFields", "dmUnion1", "dmColor",
@@ -69,14 +69,18 @@ public interface ExWinGDI extends WinGDI {
 			@FieldOrder({ "dmOrientation", "dmPaperSize", "dmPaperLength", "dmPaperWidth", "dmScale", "dmCopies", "dmDefaultSource",
 					"dmPrintQuality" })
 			public static class DUMMYSTRUCTNAME extends Structure {
-				short dmOrientation;
-				short dmPaperSize;
-				short dmPaperLength;
-				short dmPaperWidth;
-				short dmScale;
-				short dmCopies;
-				short dmDefaultSource;
-				short dmPrintQuality;
+				public short dmOrientation;
+				public short dmPaperSize;
+				public short dmPaperLength;
+				public short dmPaperWidth;
+				public short dmScale;
+				public short dmCopies;
+				public short dmDefaultSource;
+				public short dmPrintQuality;
+
+				public DUMMYSTRUCTNAME() {
+					super();
+				}
 			}
 
 			public POINTL dmPosition;
@@ -84,9 +88,13 @@ public interface ExWinGDI extends WinGDI {
 
 			@FieldOrder({ "dmPosition", "dmDisplayOrientation", "dmDisplayFixedOutput" })
 			public static class DUMMYSTRUCTNAME2 extends Structure {
-				POINTL dmPosition;
-				DWORD dmDisplayOrientation;
-				DWORD dmDisplayFixedOutput;
+				public POINTL dmPosition;
+				public DWORD dmDisplayOrientation;
+				public DWORD dmDisplayFixedOutput;
+
+				public DUMMYSTRUCTNAME2() {
+					super();
+				}
 			}
 		}
 

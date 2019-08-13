@@ -167,7 +167,7 @@ public interface ExtUser32 extends User32 {
 	 * 
 	 *         The computer must be restarted for the graphics mode to work.
 	 */
-	long ChangeDisplaySettingsExA(String lpszDeviceName, DEVMODEA lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
+	long ChangeDisplaySettingsExA(byte[] lpszDeviceName, DEVMODEA lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam);
 
 	/**
 	 * @param dwThreadId The thread identifier. The GetCurrentThreadId and

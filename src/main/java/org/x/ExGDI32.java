@@ -63,5 +63,5 @@ public interface ExGDI32 extends GDI32 {
 	 * 
 	 *         If the function fails, the return value is NULL.
 	 */
-	HDC CreateDCA(String pwszDriver, String pwszDevice, String pszPort, DEVMODEA pdm);
+	HDC CreateDCA(byte[] pwszDriver, byte[] pwszDevice, byte[] pszPort, DEVMODEA pdm);
 }
