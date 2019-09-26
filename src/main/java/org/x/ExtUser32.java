@@ -29,7 +29,7 @@ import com.sun.jna.win32.W32APIOptions;
 
 public interface ExtUser32 extends User32 {
 	/** The instance. */
-	ExtUser32 INSTANCE = (ExtUser32) Native.loadLibrary("user32", ExtUser32.class, W32APIOptions.DEFAULT_OPTIONS);
+	ExtUser32 INSTANCE = (ExtUser32) Native.load("user32", ExtUser32.class, W32APIOptions.DEFAULT_OPTIONS);
 	public final static DWORD ENUM_CURRENT_SETTINGS = new DWORD(-1);
 	public final static DWORD ENUM_REGISTRY_SETTINGS = new DWORD(-2);
 	public final static DWORD MAXIMUM_ALLOWED = new DWORD(0x02000000);

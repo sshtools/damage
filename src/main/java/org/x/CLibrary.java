@@ -33,7 +33,7 @@ public interface CLibrary extends Library {
 	public final static int IPC_NOWAIT = 00004000; /* return error on wait */
 	public static final int IPC_PRIVATE = 0; /* ((__kernel_key_t) 0) ?? */
 	public static final int IPC_RMID = 0; /* remove resource */
-	CLibrary INSTANCE = (CLibrary) Native.loadLibrary("c", CLibrary.class);
+	CLibrary INSTANCE = (CLibrary) Native.load("c", CLibrary.class);
 
 	Pointer shmat(int shmid, final Pointer shmaddr, int shmflg);
 

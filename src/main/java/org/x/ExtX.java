@@ -53,7 +53,7 @@ public interface ExtX extends X11 {
 	}
 
 	interface XExt extends Library {
-		XExt INSTANCE = (XExt) Native.loadLibrary("Xext", XExt.class);
+		XExt INSTANCE = (XExt) Native.load("Xext", XExt.class);
 
 		XImage XShmCreateImage(Display display, Visual visual, int depth, int format, String data,
 				XShmSegmentInfo shminfo, int width, int height);
@@ -68,7 +68,7 @@ public interface ExtX extends X11 {
 	}
 	interface Xcomposite extends Library {
 
-		Xcomposite INSTANCE = (Xcomposite) Native.loadLibrary("Xcomposite", Xcomposite.class);
+		Xcomposite INSTANCE = (Xcomposite) Native.load("Xcomposite", Xcomposite.class);
 		
 		int XCompositeQueryExtension(Display dpy, IntBuffer event_base_return, IntBuffer error_base_return);
 		@Deprecated
@@ -134,7 +134,7 @@ public interface ExtX extends X11 {
 			};
 		}
 
-		Xdamage INSTANCE = (Xdamage) Native.loadLibrary("Xdamage", Xdamage.class);
+		Xdamage INSTANCE = (Xdamage) Native.load("Xdamage", Xdamage.class);
 		int XDamageReportRawRectangles = 0;
 		int XDamageNotify = 0;
 
@@ -148,9 +148,9 @@ public interface ExtX extends X11 {
 		 * @param error_base_return event base return
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link Xdamage#XDamageQueryExtension(Display, IntBuffer, IntBuffer)}
+		 *             {@link #XDamageQueryExtension(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link Xdamage#XDamageQueryExtension(Display, IntByReference, IntByReference)}
+		 *             {@link #XDamageQueryExtension(Display, IntByReference, IntByReference)}
 		 *             instead
 		 * @return results
 		 */
@@ -180,9 +180,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link Xdamage#XDamageQueryVersion(Display, IntBuffer, IntBuffer)}
+		 *             {@link #XDamageQueryVersion(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link Xdamage#XDamageQueryVersion(Display, IntByReference, IntByReference)}
+		 *             {@link #XDamageQueryVersion(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -196,7 +196,7 @@ public interface ExtX extends X11 {
 		 * @param dpy display
 		 * @param major_version_return major version return
 		 * @param minor_version_return minor version return
-		 * @return resukt
+		 * @return result
 		 */
 		int XDamageQueryVersion(Display dpy, IntBuffer major_version_return, IntBuffer minor_version_return);
 
@@ -522,7 +522,7 @@ public interface ExtX extends X11 {
 			};
 		}
 
-		XFixes INSTANCE = (XFixes) Native.loadLibrary("Xfixes", XFixes.class);
+		XFixes INSTANCE = (XFixes) Native.load("Xfixes", XFixes.class);
 		/** <i>native declaration : extensions/Xfixes.h</i> */
 		public static final int XFIXES_VERSION = (int) ((6 * 10000) + (0 * 100) + (1));
 		/** <i>native declaration : extensions/Xfixes.h</i> */
@@ -539,9 +539,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesQueryExtension(Display, IntBuffer, IntBuffer)}
+		 *             {@link #XFixesQueryExtension(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link XFixes#XFixesQueryExtension(Display, IntByReference, IntByReference)}
+		 *             {@link #XFixesQueryExtension(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -570,9 +570,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesQueryVersion(Display, IntBuffer, IntBuffer)}
+		 *             {@link #XFixesQueryVersion(Display, IntBuffer, IntBuffer)}
 		 *             and
-		 *             {@link XFixes#XFixesQueryVersion(Display, IntByReference, IntByReference)}
+		 *             {@link #XFixesQueryVersion(Display, IntByReference, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -832,9 +832,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesFetchRegion(Display, NativeLong, IntBuffer)}
+		 *             {@link #XFixesFetchRegion(Display, NativeLong, IntBuffer)}
 		 *             and
-		 *             {@link XFixes#XFixesFetchRegion(Display, NativeLong, IntByReference)}
+		 *             {@link #XFixesFetchRegion(Display, NativeLong, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -866,9 +866,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesFetchRegionAndBounds(Display, NativeLong, IntBuffer, org.x.X11.XRectangle)}
+		 *             {@link #XFixesFetchRegionAndBounds(Display, NativeLong, IntBuffer, org.x.X11.XRectangle)}
 		 *             and
-		 *             {@link XFixes#XFixesFetchRegionAndBounds(Display, NativeLong, IntByReference, org.x.X11.XRectangle)}
+		 *             {@link #XFixesFetchRegionAndBounds(Display, NativeLong, IntByReference, org.x.X11.XRectangle)}
 		 *             instead
 		 */
 		@Deprecated
@@ -941,9 +941,9 @@ public interface ExtX extends X11 {
 		 * @param name name
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesSetCursorName(Display, NativeLong, Pointer)}
+		 *             {@link #XFixesSetCursorName(Display, NativeLong, Pointer)}
 		 *             and
-		 *             {@link XFixes#XFixesSetCursorName(Display, NativeLong, String)}
+		 *             {@link #XFixesSetCursorName(Display, NativeLong, String)}
 		 *             instead
 		 */
 		@Deprecated
@@ -994,9 +994,9 @@ public interface ExtX extends X11 {
 		 * @param name name
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesChangeCursorByName(Display, NativeLong, Pointer)}
+		 *             {@link #XFixesChangeCursorByName(Display, NativeLong, Pointer)}
 		 *             and
-		 *             {@link XFixes#XFixesChangeCursorByName(Display, NativeLong, String)}
+		 *             {@link #XFixesChangeCursorByName(Display, NativeLong, String)}
 		 *             instead
 		 */
 		@Deprecated
@@ -1068,9 +1068,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntBuffer)}
+		 *             {@link #XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntBuffer)}
 		 *             and
-		 *             {@link XFixes#XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntByReference)}
+		 *             {@link #XFixesCreatePointerBarrier(Display, NativeLong, int, int, int, int, int, int, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -1116,9 +1116,9 @@ public interface ExtX extends X11 {
 		 * @return result
 		 * 
 		 * @deprecated use the safer methods
-		 *             {@link XFixes#XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntBuffer)}
+		 *             {@link #XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntBuffer)}
 		 *             and
-		 *             {@link XFixes#XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntByReference)}
+		 *             {@link #XFixesCreatePointerBarrierVelocity(Display, NativeLong, int, int, int, int, int, int, int, IntByReference)}
 		 *             instead
 		 */
 		@Deprecated
@@ -1199,7 +1199,7 @@ public interface ExtX extends X11 {
 	int XGetErrorDatabaseText(Display display, String name, String message, String default_string, ByteBuffer buffer_return,
 			int length);
 
-	ExtX INSTANCE = (ExtX) Native.loadLibrary("X11", ExtX.class);
+	ExtX INSTANCE = (ExtX) Native.load("X11", ExtX.class);
 	public final static NativeLong AllPlanes = new NativeLong(0);
 
 	class Macros {

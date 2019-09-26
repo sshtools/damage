@@ -37,7 +37,7 @@ public interface ExtKernel32 extends Kernel32 {
 
 	
 	/** The instance. */
-	ExtKernel32 INSTANCE = (ExtKernel32) Native.loadLibrary("kernel32", ExtKernel32.class, W32APIOptions.DEFAULT_OPTIONS);
+	ExtKernel32 INSTANCE = (ExtKernel32) Native.load("kernel32", ExtKernel32.class, W32APIOptions.DEFAULT_OPTIONS);
 
 	/**
 	 * The GetFileSize function retrieves the size, in bytes, of the specified
